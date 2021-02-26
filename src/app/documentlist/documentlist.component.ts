@@ -2,6 +2,7 @@ import { Component, ViewChild, Input } from '@angular/core';
 import { NotificationService } from '@alfresco/adf-core';
 import { DocumentListComponent } from '@alfresco/adf-content-services';
 import { PreviewService } from '../services/preview.service';
+import { NodeEntry } from '@alfresco/js-api/src/api/content-rest-api/model/nodeEntry';
 
 @Component({
   selector: 'app-documentlist',
@@ -30,6 +31,10 @@ export class DocumentlistComponent {
     if (entry && entry.isFile) {
       this.preview.showResource(entry.id);
     }
+  }
+
+  onTreeClick(node:NodeEntry){
+    this.nodeId = node.entry.id;
   }
 
   onGoBack(event: any) {
